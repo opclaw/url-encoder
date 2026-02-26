@@ -1,24 +1,176 @@
+@import url('./design-system.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Violet Theme Overrides */
+:root {
+  /* Primary Colors - Violet */
+  --primary-50: #f5f3ff;
+  --primary-100: #ede9fe;
+  --primary-200: #ddd6fe;
+  --primary-300: #c4b5fd;
+  --primary-400: #a78bfa;
+  --primary-500: #8b5cf6;
+  --primary-600: #7c3aed;
+  --primary-700: #6d28d9;
+  --primary-800: #5b21b6;
+  --primary-900: #4c1d95;
+
+  /* Aliases */
+  --color-primary: var(--primary-600);
+  --color-primary-light: var(--primary-500);
+  --color-primary-dark: var(--primary-700);
+  --color-background: var(--neutral-50);
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-border: var(--neutral-200);
+  --color-border-strong: var(--neutral-300);
+  --color-text-primary: var(--neutral-900);
+  --color-text-secondary: var(--neutral-600);
+  --color-text-muted: var(--neutral-400);
+  --color-text-inverse: #ffffff;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  --gradient-primary-hover: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-500) 100%);
+  --gradient-surface: linear-gradient(180deg, var(--neutral-50) 0%, #ffffff 100%);
+}
+
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm border-none cursor-pointer transition-all duration-200;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-md);
   }
+  
   .btn-primary {
-    @apply btn bg-indigo-600 text-white shadow-md hover:bg-indigo-700 hover:shadow-lg;
+    background: var(--gradient-primary);
+    color: var(--color-text-inverse);
+    box-shadow: var(--shadow-md);
   }
+  
+  .btn-primary:hover:not(:disabled) {
+    background: var(--gradient-primary-hover);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(0) scale(0.98);
+  }
+  
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
   .btn-secondary {
-    @apply btn bg-white text-slate-700 border border-slate-300 shadow-sm hover:bg-slate-50 hover:border-indigo-300 hover:text-indigo-600;
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
   }
+  
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--neutral-50);
+    border-color: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+  
   .btn-ghost {
-    @apply btn bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900;
+    @apply btn bg-transparent;
+    color: var(--color-text-secondary);
   }
+  
+  .btn-ghost:hover:not(:disabled) {
+    background: var(--neutral-100);
+    color: var(--color-text-primary);
+  }
+  
   .input {
-    @apply w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500;
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
   }
+  
+  .input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--primary-100);
+  }
+  
+  .input::placeholder {
+    color: var(--color-text-muted);
+  }
+  
   .textarea {
-    @apply w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 resize-y transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500;
+    @apply input resize-y;
+  }
+  
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-bounce), box-shadow var(--transition-base);
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .hero {
+    padding: var(--space-16) var(--space-6);
+    background: var(--gradient-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  @media (min-width: 768px) {
+    .hero {
+      padding: var(--space-20) var(--space-8);
+    }
+  }
+  
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .icon-box {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .feature-card {
+    background: var(--neutral-50);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+  }
+  
+  .feature-card:hover {
+    border-color: var(--primary-200);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+  
+  .feature-icon {
+    background: linear-gradient(135deg, var(--primary-100) 0%, var(--primary-200) 100%);
+  }
+}
+
+@layer utilities {
+  .glow {
+    box-shadow: 0 0 20px -5px var(--primary-500);
   }
 }
