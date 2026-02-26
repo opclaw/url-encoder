@@ -17,11 +17,18 @@ export const metadata: Metadata = {
     siteName: 'URL Encoder',
     title: 'URL Encoder / Decoder — Percent Encoding',
     description: 'Encode and decode URLs with percent-encoding.',
+    images: [{
+      url: '/og-image.svg',
+      width: 1200,
+      height: 630,
+      alt: 'URL Encoder — Encode & Decode URLs',
+    }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'URL Encoder / Decoder',
     description: 'Encode and decode URLs with percent-encoding.',
+    images: ['/og-image.svg'],
   },
   robots: { index: true, follow: true },
 }
