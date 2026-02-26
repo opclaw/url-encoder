@@ -3,6 +3,9 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://url-encoder.vercel.app'),
+  alternates: {
+    canonical: 'https://url-encoder.vercel.app',
+  },
   title: 'URL Encoder / Decoder — Percent Encoding | Free Online Tool',
   description: 'Encode and decode URLs with percent-encoding. Free online URL encoder and decoder for web developers.',
   keywords: ['url encoder', 'url decoder', 'percent encoding', 'url encode', 'url decode', 'uri encoder'],
